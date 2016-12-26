@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Connect-VPN
+Exec=gksu bash /etc/connect-vpn/connect-vpn.sh
+Comment=Conectarse a la VPN
+Icon=connect-vpn
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;System;Settings;
+StartupNotify=false

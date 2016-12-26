@@ -1,0 +1,58 @@
+#!/bin/bash -e
+#
+# ==============================================================================
+# PAQUETE: connect-vpn
+# ARCHIVO: postinst
+# DESCRIPCIÓN: Configura el sistema despues la instalación del paquete.
+# COPYRIGHT:
+#  (C) 2016 Victor Pino <victopin0@gmail.com>
+# LICENCIA: GPL3
+# ==============================================================================
+#
+# Este programa es software libre. Puede redistribuirlo y/o modificarlo bajo los
+# términos de la Licencia Pública General de GNU (versión 3).
+
+case ${1} in
+
+    configure)
+
+	UHOME="/home"
+	USERS=$(cut -d':' -f 1 /etc/passwd)
+
+	for u in $USERS; do
+	    
+	    ID=$(id -u $u)
+	    
+	    if [ $ID -ge 1000 ] ; then
+				
+			if [ -d ${UHOME}/${u} ] ; then
+		
+				cp /usr/share/applications/connect-vpn.desktop ${UHOME}/${u}/Escritorio/
+				chmod +x ${UHOME}/${u}/Escritorio/connect-vpn.desktop
+
+	        fi
+	    fi
+
+	done
+
+	chmod +x /usr/share/applications/connect-vpn.desktop
+    
+        chmod 600 /etc/connect-vpn/passwd.txt
+    ;;
+
+        abort-upgrade|abort-remove|abort-deconfigure)
+
+        ;;
+
+        *)
+
+                echo "postinst no reconoce el argumento '"${1}"'" >&2
+                exit 1
+
+        ;;
+
+esac
+
+#DEBHELPER#
+
+exit 0

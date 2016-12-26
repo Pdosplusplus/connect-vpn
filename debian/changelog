@@ -1,0 +1,5 @@
+connect-vpn (0.1) stable; urgency=medium
+
+  * feat(connect-vpn): Update the way to connect for openvpn
+
+ -- Victor Pino  <victopin0@gmail.com>  Sun, 25 Dec 2016 20:57:57 -0400

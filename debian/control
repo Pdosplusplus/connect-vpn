@@ -1,0 +1,14 @@
+Source: connect-vpn
+Section: desktop
+Priority: standard
+Maintainer: Victor Pino <victopin0@gmail.com>
+Build-Depends: debhelper (>= 9.20150101)
+Standards-Version: 3.9.6
+
+Package: connect-vpn
+Architecture: all
+Depends: openvpn,
+		 openconnect,
+         ${misc:Depends}
+Description: Connect to VPN
+ Package to connect to VPN.
